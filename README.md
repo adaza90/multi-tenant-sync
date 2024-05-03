@@ -11,7 +11,7 @@ To install Multi-Tenant Sync, follow these steps:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/adaza90/multi-tenant-sync.git
+   git clone https://github.com/dazza-dev/multi-tenant-sync.git
    ```
 
 2. Navigate to the project directory:
@@ -64,7 +64,7 @@ Contributions are welcome. If you find any bugs or have ideas for improvements, 
 
 ## Author
 
-Multi-Tenant Sync was created by [DAZZA](https://github.com/adaza90).
+Multi-Tenant Sync was created by [DAZZA](https://github.com/dazza-dev).
 
 ## License
 
