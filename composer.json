@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "adaza90/multi-tenant-sync",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Multi-Tenant Sync is a system designed to efficiently execute queries or functions in Software as a Service (SAAS) applications that employ the separate database per tenant method.",
+    "keywords": ["SAAS", "software as a service", "laravel", "framework"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
