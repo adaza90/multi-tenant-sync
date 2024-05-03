@@ -11,7 +11,7 @@ class TenantDatabaseMiddleware
     /**
      * Process the queued job.
      *
-     * @param  \Closure(object): void  $next
+     * @param  Closure(object): void  $next
      */
     public function handle(object $job, Closure $next): void
     {
@@ -36,7 +36,10 @@ class TenantDatabaseMiddleware
         $this->disconnectDatabase($job);
     }
 
-    private function prepareLogInfo($job)
+    /**
+     * @return array<string, mixed>
+     */
+    private function prepareLogInfo(object $job): array
     {
         return [
             'job_execution_id' => $job->jobExecutionId,
@@ -44,13 +47,13 @@ class TenantDatabaseMiddleware
         ];
     }
 
-    private function setDatabaseConnection($job)
+    private function setDatabaseConnection(object $job): void
     {
         clearDatabaseConn('tenant', $job->hash);
         setDatabaseConn('tenant', $job->database, $job->hash);
     }
 
-    private function disconnectDatabase($job)
+    private function disconnectDatabase(object $job): void
     {
         DB::disconnect('tenant'.$job->hash);
         DB::purge('tenant'.$job->hash);

@@ -10,7 +10,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Bus;
-use Illuminate\Support\Facades\DB;
 
 class JobExecutionsController extends Controller
 {
@@ -24,10 +23,10 @@ class JobExecutionsController extends Controller
             'job_batches.cancelled_at',
             'job_batches.finished_at',
         ])
-            ->selectRaw(DB::raw('CASE WHEN job_batches.total_jobs > 0
+            ->selectRaw('CASE WHEN job_batches.total_jobs > 0
                 THEN ROUND((job_batches.total_jobs - job_batches.pending_jobs) / job_batches.total_jobs * 100)
             ELSE 0
-            END AS progress'))
+            END AS progress')
             ->leftJoin('job_batches', 'job_batches.id', 'job_executions.batch_id')
             ->where('job_executions.project_id', $project->id);
 

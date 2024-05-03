@@ -35,14 +35,12 @@ class Query implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): string
     {
         // Determine if the batch has been cancelled...
         if ($this->batch()?->cancelled()) {
-            return;
+            return '';
         }
 
         // Wait
@@ -53,6 +51,6 @@ class Query implements ShouldQueue
         $statement = $conn->getPdo()->prepare($this->params);
         $statement->execute();
 
-        return 'The operation affected '.$statement->rowCount().' records';
+        return 'The operation affected '.(int) $statement->rowCount().' records';
     }
 }

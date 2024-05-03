@@ -34,14 +34,12 @@ class Other implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): string
     {
         // Determine if the batch has been cancelled...
         if ($this->batch()?->cancelled()) {
-            return;
+            return '';
         }
 
         // My Custom Job
